@@ -1,8 +1,7 @@
-
-import axios from 'axios';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import UserCard from '../components/UserCard';
+import { axiosInstance } from '../config/axiosInstance';
 const UsersPage = () => {
     const [usersData, setUsersData] = useState([])
     const [isLoading, setIsLoading] = useState(false)
@@ -10,7 +9,7 @@ const UsersPage = () => {
     const getUsersData = async () => {
         setIsLoading(true)
         try {
-            const res = await axios.get("https://fakestoreapi.com/users")
+            const res = await axiosInstance.get(`/users`)
             setUsersData(res.data);
         } catch (error) {
             console.log("error in users api", error);

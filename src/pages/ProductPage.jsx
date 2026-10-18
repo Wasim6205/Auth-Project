@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useState } from "react"
-import axios from 'axios';
 import ProductCard from "../components/ProductCard";
+import { axiosInstance } from "../config/axiosInstance";
 
 const ProductPage = () => {
     const [productsData,setProductsData] = useState([])
@@ -10,7 +10,7 @@ const ProductPage = () => {
     const getProductsData = async () => {
         setIsLoading(true)
         try {
-            const res = await axios.get("https://fakestoreapi.com/products")
+            const res = await axiosInstance.get(`/products`)
             setProductsData(res.data);
         } catch (error) {
             console.log("error in products api", error);

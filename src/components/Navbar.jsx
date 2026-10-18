@@ -8,7 +8,7 @@ const Navbar = () => {
     const handleLogout = () => {
         localStorage.removeItem("loggedInUser")
         setLoggedInUser(null)
-        toast.success("user logged out")
+        toast.warn("user logged out")
     }
   return (
     <div className="border-r border-gray-500 p-3 flex flex-col justify-between">

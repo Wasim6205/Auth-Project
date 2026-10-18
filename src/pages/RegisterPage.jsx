@@ -1,23 +1,8 @@
 import { Link } from "react-router";
-import {useForm} from "react-hook-form"
-import { useContext } from "react";
-import { Auth } from "../context/AuthContext";
-import { toast } from 'react-toastify';
+import { useAuth } from "../hooks/useAuth";
 
 const RegisterPage = () => {
-    const {registeredUsers,setRegisteredUsers} = useContext(Auth)
-    
-    const {register,handleSubmit,reset,formState:{errors,isValid}} = useForm({
-        mode:"onChange"
-    })
-
-    const formSubmit = (data) => {
-        let arr = [...registeredUsers,data]
-        setRegisteredUsers(arr)
-        toast.success("user registered successfully")
-        localStorage.setItem("registeredUsers",JSON.stringify(arr))
-        reset()
-    }
+    let {register,handleSubmit,registerFormSubmit,errors,isValid} = useAuth()
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4 py-10">
       <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
@@ -33,7 +18,7 @@ const RegisterPage = () => {
         </div>
 
         {/* Register Form */}
-        <form onSubmit={handleSubmit(formSubmit)} className="space-y-5">
+        <form onSubmit={handleSubmit(registerFormSubmit)} className="space-y-5">
 
           {/* Name */}
           <div>
