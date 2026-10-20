@@ -13,7 +13,7 @@ axiosInstance.interceptors.response.use(
     }
 )
 
-// axiosInstance.interceptors.request.use(
-//     () => {},
-//     () => {},
-// )
+axiosInstance.interceptors.request.use(
+    () => {},
+    () => {},
+)
